@@ -93,7 +93,7 @@ const AllArticles: React.FC = () => {
           renderedArticles.map((article, index) => (
             <article
               key={index}
-              className={`basis-40 md:basis-80 mb-6 shrink-0`}
+              className={`basis-36 md:basis-80 mb-6 shrink-0`}
             >
               <Link href={`/${article.id}`}>
                 <div className="relative mb-3">

@@ -43,7 +43,7 @@ const Articles = ({
               <article
                 key={index}
                 className={`${
-                  !wrap ? "basis-48" : "basis-40"
+                  !wrap ? "basis-48" : "basis-36"
                 } md:basis-80 mb-6 shrink-0`}
               >
                 <Link href={`/${article.id}`} className="block">

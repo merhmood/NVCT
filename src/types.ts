@@ -6,11 +6,7 @@ type ArticleType = {
   title: string;
   creators: string[];
   tags: string[];
-  metadata: {
-    description: string;
-    keywords: string;
-    authors: { name: string }[];
-  };
+  description: string;
 };
 
 type Props = {

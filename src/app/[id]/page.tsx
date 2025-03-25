@@ -20,9 +20,8 @@ export async function generateMetadata(
 
   return {
     title: article[0] ? article[0].title : "",
-    keywords: article[0] ? article[0].metadata.keywords : "",
-    description: article[0] ? article[0].metadata.description : "",
-    authors: article[0] ? article[0].metadata.authors : [],
+    keywords: article[0] ? [...article[0].tags, ...article[0].creators] : [],
+    description: article[0] ? article[0].description : "",
   };
 }
 
