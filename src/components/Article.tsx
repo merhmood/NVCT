@@ -27,11 +27,11 @@ const Article = () => {
       for (let i = 0; i < response.articles.length - 1; i++) {
         if (moreArticles.length < 3) {
           const similarity = jaccardSimilarity(
-            article[0].tags,
-            response.articles[i].tags
+            [...article[0].tags, ...article[0].creators],
+            [...response.articles[i].tags, ...response.articles[i].creators]
           );
           console.log(similarity);
-          if (similarity >= 0.2 && similarity !== 1) {
+          if (similarity >= 0.3 && similarity !== 1) {
             moreArticles.push(response.articles[i]);
           }
         } else {
