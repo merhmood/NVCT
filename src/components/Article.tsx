@@ -57,7 +57,7 @@ const Article = () => {
     ],
   };
 
-  return (
+  return article ? (
     <section className="flex flex-col-reverse h-fit lg:gap-10 lg:flex-row lg:justify-between mt-24 lg:mt-32 mx-auto max-w-6xl w-5/6">
       <div className="basis-4/5">
         <Suspense fallback={<div className="my-10">Loading Article</div>}>
@@ -118,6 +118,7 @@ const Article = () => {
                           src={article.video}
                           className="rounded-md object-cover"
                         ></video>
+                        <div className="absolute top-0 w-full h-full"></div>
                       </div>
                       <p className="text-blue-700 text-sm lg:text-base hover:font-medium">
                         {article.title}
@@ -132,6 +133,8 @@ const Article = () => {
       </div>
       <div className="basis-1/5 mb-5 lg:mb-0">Ads space</div>
     </section>
+  ) : (
+    <div className="my-10">Loading Article</div>
   );
 };
 
