@@ -10,7 +10,7 @@ const Footer = () => {
     },
     {
       image: "/social-icons/instagram.png",
-      url: "https://www.instagram.com/nuttyvibes",
+      url: "https://www.instagram.com/nutty__vibes",
       alt: "instagram",
     },
   ];

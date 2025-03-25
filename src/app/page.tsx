@@ -40,7 +40,7 @@ export default function Page() {
         <Navigation />
         <div className="mt-32 w-5/6 max-w-5xl mx-auto">
           <Link
-            href="https://www.instagram.com/nuttyvibes"
+            href="https://www.instagram.com/nutty__vibes"
             className="lg:hidden text-blue-700 text-sm my-4 text-center"
             target="_blank"
           >

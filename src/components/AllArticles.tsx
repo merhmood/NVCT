@@ -82,7 +82,7 @@ const AllArticles: React.FC = () => {
   return (
     <section className="w-5/6 max-w-5xl mx-auto mt-28 lg:mt-32">
       <Link
-        href="https://www.instagram.com/nuttyvibes"
+        href="https://www.instagram.com/nutty__vibes"
         className="block lg:hidden text-blue-700 text-sm my-4 mb-6"
         target="_blank"
       >
