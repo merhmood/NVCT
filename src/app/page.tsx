@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Metadata } from "next";
 
 import Navigation from "@/components/Navigation";
 import Articles from "@/components/Articles";
@@ -12,6 +11,7 @@ import Link from "next/link";
 
 export default function Page() {
   const [articles, setArticles] = useState<Array<ArticleType>>([]);
+  const [innerWidth, setInnerWidth] = useState<number | null>(null);
 
   useEffect(() => {
     // Fetch data and set them in reverse order, also handles
@@ -21,6 +21,17 @@ export default function Page() {
       const response: { articles: [] } = await data.json();
       setArticles(response.articles);
     })();
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setInnerWidth(window.innerWidth);
+
+      const handleResize = () => setInnerWidth(window.innerWidth);
+      window.addEventListener("resize", handleResize);
+
+      return () => window.removeEventListener("resize", handleResize);
+    }
   }, []);
 
   return (
@@ -44,7 +55,9 @@ export default function Page() {
           <Articles
             articles={
               // Pass 3 articles for large screen and 4 articles for small screen
-              innerWidth < 800 ? articles.slice(0, 4) : articles.slice(0, 3)
+              innerWidth && innerWidth < 800
+                ? articles.slice(0, 4)
+                : articles.slice(0, 3)
             }
             title="Older videos"
             wrap
