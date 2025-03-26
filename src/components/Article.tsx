@@ -69,7 +69,7 @@ const Article = () => {
               ? article.tags.map((value, index) => (
                   <p
                     key={index}
-                    className="bg-gray-100 px-3 py-1 text-sm lg:text-base"
+                    className="bg-gray-100 text-black px-3 py-1 text-sm lg:text-base"
                   >
                     {value}
                   </p>
@@ -110,17 +110,17 @@ const Article = () => {
                 moreArticles.map((article, index) => (
                   <article
                     key={index}
-                    className="basis-44 lg:basis-64 mb-3 shrink-0"
+                    className="p-3 basis-44 lg:basis-64 mb-3 shrink-0 md:basis-80 bg-[#ff99f3]  text-[#1d071b] rounded-lg"
                   >
                     <Link href={`/${article.id}`} className="block">
-                      <div className="relative h-fit mb-3">
+                      <div className="relative h-fit mb-3s">
                         <video
                           src={article.video}
-                          className="rounded-md object-cover"
+                          className="rounded-md object-cover h-24 md:h-36 w-full"
                         ></video>
                         <div className="absolute top-0 w-full h-full"></div>
                       </div>
-                      <p className="text-blue-700 text-sm lg:text-base hover:font-medium">
+                      <p className="text-sm lg:text-base hover:font-medium">
                         {article.title}
                       </p>
                     </Link>

@@ -34,7 +34,7 @@ const Articles = ({
       <div className="w-full overflow-x-scroll lg:overflow-hidden article-scroll">
         {" "}
         <div
-          className={`flex ${
+          className={`flex items-start ${
             wrap && "flex-wrap justify-center lg:justify-start"
           } lg:flex-wrap gap-2`}
         >
@@ -43,19 +43,19 @@ const Articles = ({
               <article
                 key={index}
                 className={`${
-                  !wrap ? "basis-48" : "basis-36"
-                } md:basis-80 mb-6 shrink-0 bg-[#ff99f3] p-4 rounded-lg`}
+                  !wrap ? "basis-48 p-3" : "basis-36 p-2"
+                } md:basis-80 mb-6 shrink-0 bg-[#ff99f3]  text-[#1d071b] rounded-lg`}
               >
                 <Link href={`/${article.id}`} className="block">
                   <div className="relative mb-3">
                     <video
                       src={article.video}
-                      className="rounded-md object-cover"
+                      className="rounded-md object-cover h-24 md:h-36 w-full"
                     ></video>
                     <div className="absolute top-0 w-full h-full"></div>
                   </div>
                   <p
-                    className={`text-[#1d071b] ${
+                    className={`${
                       wrap && "text-xs"
                     } text-sm lg:text-base hover:font-medium`}
                   >

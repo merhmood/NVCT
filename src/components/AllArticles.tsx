@@ -88,22 +88,22 @@ const AllArticles: React.FC = () => {
       >
         Follow us on Instagram.
       </Link>
-      <div className="flex flex-wrap gap-2 lg:gap-4 justify-center lg:justify-start">
+      <div className="flex items-start flex-wrap gap-2 lg:gap-4 justify-center lg:justify-start">
         {renderedArticles.length > 0 ? (
           renderedArticles.map((article, index) => (
             <article
               key={index}
-              className={`basis-36 md:basis-80 mb-6 shrink-0`}
+              className={`p-2 basis-36 md:basis-80 mb-6 shrink-0 bg-[#ff99f3]  text-[#1d071b] rounded-lg`}
             >
               <Link href={`/${article.id}`}>
                 <div className="relative mb-3">
                   <video
                     src={article.video}
-                    className="rounded-md object-cover"
+                    className="rounded-md object-cover h-24 md:h-36 w-full"
                   ></video>
                   <div className="absolute top-0 w-full h-full"></div>
                 </div>
-                <p className="text-blue-700 text-xs lg:text-base hover:font-medium">
+                <p className="text-xs lg:text-base hover:font-medium">
                   {article.title}
                 </p>
               </Link>

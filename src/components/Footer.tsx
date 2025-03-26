@@ -15,7 +15,7 @@ const Footer = () => {
     },
   ];
   return (
-    <footer className="bg-[#f3f3f3] mt-16 py-8 lg:py-6">
+    <footer className="bg-[#ff99f3] text-[#1d071b] mt-16 py-8 lg:py-6">
       <div className="w-5/6 lg:w-11/12 max-w-7xl mx-auto flex flex-col justify-center items-center lg:flex-row lg:justify-between lg:items-center">
         <div className="text-[#000] lg:text-2xl">
           <span className={ollifiaPoettry.className}>Copyright</span> of{" "}
