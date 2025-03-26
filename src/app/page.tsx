@@ -62,10 +62,10 @@ export default function Page() {
             title="Older videos"
             wrap
           />
-          <div className="mt-2 w-5/6 max-w-5xl mx-auto">
+          <div className="mt-2 w-5/6 max-w-5xl mx-auto py-3 rounded-full bg-[#1d071b]">
             <Link
               href={"/all-videos"}
-              className="block w-full text-[#611364] text-sm lg:text-lg text-center hover:font-bold"
+              className="block w-full text-[#fff] text-base lg:text-lg text-center hover:font-bold"
             >
               See more videos
             </Link>

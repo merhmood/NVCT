@@ -24,10 +24,10 @@ const Navigation: React.FC = () => {
     link === "Home" ? "/" : `/${link.toLowerCase()}`;
 
   return (
-    <header className=" fixed top-0 w-full z-10 bg-white pb-2">
-      <section className="flex flex-col items-center lg:flex-row lg:justify-between lg:items-center mt-14 mx-auto max-w-6xl w-5/6">
+    <header className=" fixed top-0 w-full z-10 bg-[#ff99f3] text-[#1d071b] pb-2">
+      <section className="flex flex-col items-center lg:flex-row lg:justify-between lg:items-center mt-7 pb-3 mx-auto max-w-6xl w-5/6">
         <h2
-          className={`${ollifiaPoettry.className} text-2xl lg:text-4xl text-center lg:text-left`}
+          className={`${ollifiaPoettry.className} text-3xl lg:text-4xl text-center lg:text-left`}
         >
           <Link href="/">NuttyVibes</Link>
         </h2>

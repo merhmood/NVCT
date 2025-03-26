@@ -44,7 +44,7 @@ const Articles = ({
                 key={index}
                 className={`${
                   !wrap ? "basis-48" : "basis-36"
-                } md:basis-80 mb-6 shrink-0`}
+                } md:basis-80 mb-6 shrink-0 bg-[#ff99f3] p-4 rounded-lg`}
               >
                 <Link href={`/${article.id}`} className="block">
                   <div className="relative mb-3">
@@ -55,7 +55,7 @@ const Articles = ({
                     <div className="absolute top-0 w-full h-full"></div>
                   </div>
                   <p
-                    className={`text-blue-700 ${
+                    className={`text-[#1d071b] ${
                       wrap && "text-xs"
                     } text-sm lg:text-base hover:font-medium`}
                   >
