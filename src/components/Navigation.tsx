@@ -25,11 +25,11 @@ const Navigation: React.FC = () => {
 
   return (
     <header className=" fixed top-0 w-full z-10 bg-[#ff99f3] text-[#1d071b] pb-2">
-      <section className="flex flex-col items-center lg:flex-row lg:justify-between lg:items-center mt-7 pb-3 mx-auto max-w-6xl w-5/6">
+      <section className="flex flex-col items-center lg:flex-row lg:justify-between lg:items-center mt-7 pb-2 lg:pb-3 mx-auto max-w-6xl w-5/6">
         <h2
           className={`${ollifiaPoettry.className} text-3xl lg:text-4xl text-center lg:text-left`}
         >
-          <Link href="/">NuttyVibes</Link>
+          <Link href="/">😈NuttyVibes😈</Link>
         </h2>
         {/* {pathNameLength < 3 && (
           <nav className="flex justify-between mt-7 lg:mt-0">

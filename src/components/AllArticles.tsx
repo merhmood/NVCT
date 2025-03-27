@@ -80,34 +80,31 @@ const AllArticles: React.FC = () => {
   };
 
   return (
-    <section className="w-5/6 max-w-5xl mx-auto mt-28 lg:mt-32">
-      <Link
-        href="https://www.instagram.com/nutty__vibes"
-        className="block lg:hidden text-blue-700 text-sm my-4 mb-6"
-        target="_blank"
-      >
-        Follow us on Instagram.
-      </Link>
+    <section className="w-5/6 max-w-5xl mx-auto">
       <div className="flex items-start flex-wrap gap-2 lg:gap-4 justify-center lg:justify-start">
         {renderedArticles.length > 0 ? (
           renderedArticles.map((article, index) => (
-            <article
-              key={index}
-              className={`p-2 basis-36 md:basis-80 mb-6 shrink-0 bg-[#ff99f3]  text-[#1d071b] rounded-lg`}
-            >
-              <Link href={`/${article.id}`}>
-                <div className="relative mb-3">
-                  <video
-                    src={article.video}
-                    className="rounded-md object-cover h-24 md:h-36 w-full"
-                  ></video>
-                  <div className="absolute top-0 w-full h-full"></div>
-                </div>
-                <p className="text-xs lg:text-base hover:font-medium">
-                  {article.title}
-                </p>
-              </Link>
-            </article>
+            <React.Fragment key={index}>
+              <article
+                className={`p-2 basis-36 md:basis-80 shrink-0 bg-[#ff99f3]  text-[#1d071b] rounded-lg`}
+              >
+                <Link href={`/${article.id}`}>
+                  <div className="relative mb-3">
+                    <video
+                      src={article.video}
+                      className="rounded-md object-cover h-24 md:h-36 w-full"
+                    ></video>
+                    <div className="absolute top-0 w-full h-full"></div>
+                  </div>
+                  <p className="text-xs lg:text-base hover:font-medium">
+                    {article.title}
+                  </p>
+                </Link>
+              </article>
+              {(index + 1) % 3 === 0 && (
+                <div className="basis-36 md:basis-80 mb-6 shrink-0">Ads</div>
+              )}
+            </React.Fragment>
           ))
         ) : !offline ? (
           <div className="grid place-items-center w-full h-full -mt-4">

@@ -35,34 +35,40 @@ const Articles = ({
         {" "}
         <div
           className={`flex items-start ${
-            wrap && "flex-wrap justify-center lg:justify-start"
+            wrap && " grid grid-cols-2 lg:flex justify-evenly lg:justify-start"
           } lg:flex-wrap gap-2`}
         >
           {articles.length > 0 ? (
             articles.map((article, index) => (
-              <article
-                key={index}
-                className={`${
-                  !wrap ? "basis-48 p-3" : "basis-36 p-2"
-                } md:basis-80 mb-6 shrink-0 bg-[#ff99f3]  text-[#1d071b] rounded-lg`}
-              >
-                <Link href={`/${article.id}`} className="block">
-                  <div className="relative mb-3">
-                    <video
-                      src={article.video}
-                      className="rounded-md object-cover h-24 md:h-36 w-full"
-                    ></video>
-                    <div className="absolute top-0 w-full h-full"></div>
+              <React.Fragment key={index}>
+                <article
+                  className={`${
+                    !wrap ? "basis-48 p-3" : "basis-36 p-2"
+                  } md:basis-80 shrink-0 bg-[#ff99f3]  text-[#1d071b] rounded-lg`}
+                >
+                  <Link href={`/${article.id}`} className="block">
+                    <div className="relative mb-3">
+                      <video
+                        src={article.video}
+                        className="rounded-md object-cover h-24 md:h-36 w-full"
+                      ></video>
+                      <div className="absolute top-0 w-full h-full"></div>
+                    </div>
+                    <p
+                      className={`${
+                        wrap && "text-xs"
+                      } text-sm lg:text-base hover:font-medium`}
+                    >
+                      {article.title}
+                    </p>
+                  </Link>
+                </article>
+                {(index + 1) % 3 === 0 && (
+                  <div className="basis-36 md:basis-80 mb-6 shrink-0 grow">
+                    Ads
                   </div>
-                  <p
-                    className={`${
-                      wrap && "text-xs"
-                    } text-sm lg:text-base hover:font-medium`}
-                  >
-                    {article.title}
-                  </p>
-                </Link>
-              </article>
+                )}
+              </React.Fragment>
             ))
           ) : !offline ? (
             <div className="grid place-items-center w-full h-full -mt-4">
