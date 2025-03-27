@@ -26,7 +26,6 @@ export default function RootLayout({
       </head>
       <body className={`${satoshi.className} bg-[#181717] text-white`}>
         {children}
-        <BannerAds />
         <PopUnderAds />
       </body>
     </html>

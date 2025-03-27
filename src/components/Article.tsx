@@ -137,9 +137,41 @@ const Article = () => {
             </div>
           </div>
         </div>
-        <div className="mt-5 mb-2"></div>
+        <div className="relative mt-1 mb-5">
+          <iframe
+            src="//a.magsrv.com/iframe.php?idzone=5571162&size=300x250"
+            className="object-contain"
+            scrolling="no"
+          ></iframe>
+          <p className="absolute top-0 left-2 font-bold">Ads</p>
+        </div>
       </div>
-      <div className="basis-1/5 mb-5 lg:mb-0"></div>
+      <div className="basis-1/5 mb-5 lg:mb-0">
+        <div className="relative mt-1 mb-5">
+          <iframe
+            src="//a.magsrv.com/iframe.php?idzone=5571162&size=300x250"
+            className="object-contain"
+            scrolling="no"
+          ></iframe>
+          <p className="absolute top-0 left-2 font-bold">Ads</p>
+        </div>
+        <div className="hidden lg:block relative mt-1 mb-5">
+          <iframe
+            src="//a.magsrv.com/iframe.php?idzone=5571162&size=300x250"
+            className="object-contain"
+            scrolling="no"
+          ></iframe>
+          <p className="absolute top-0 left-2 font-bold">Ads</p>
+        </div>
+        <div className="hidden lg:block relative mt-1 mb-5">
+          <iframe
+            src="//a.magsrv.com/iframe.php?idzone=5571162&size=300x250"
+            className="object-contain"
+            scrolling="no"
+          ></iframe>
+          <p className="absolute top-0 left-2 font-bold">Ads</p>
+        </div>
+      </div>
     </section>
   ) : (
     <div className="my-10">Loading Article</div>

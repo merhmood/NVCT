@@ -1,24 +1,17 @@
 "use client";
 
-import { useEffect } from "react";
+import Script from "next/script";
 
 const BannerAds = () => {
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.type = "application/javascript";
-    script.innerHTML = `
-        <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script> 
-        <ins class="eas6a97888e2" data-zoneid="5571162" data-keywords="keywords"></ins> 
-        <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-     `;
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
-
-  return null;
+  return (
+    <>
+      <Script id="ads-banner" async src="https://a.magsrv.com/ad-provider.js" />
+      <ins className="eas6a97888e2" data-zoneid="5571162"></ins>
+      <Script id="ads-banner-details">
+        {`(AdProvider = window.AdProvider || []).push({"serve": {}})`}
+      </Script>
+    </>
+  );
 };
 
 export default BannerAds;
