@@ -35,7 +35,7 @@ const Articles = ({
         {" "}
         <div
           className={`flex items-start ${
-            wrap && " grid grid-cols-2 lg:flex justify-evenly lg:justify-start"
+            wrap && "grid grid-cols-2 lg:flex justify-evenly lg:justify-start"
           } lg:flex-wrap gap-2`}
         >
           {articles.length > 0 ? (
@@ -50,7 +50,7 @@ const Articles = ({
                     <div className="relative mb-3">
                       <video
                         src={article.video}
-                        className="rounded-md object-cover h-24 md:h-36 w-full"
+                        className="rounded-md object-cover max-h-40 md:h-36 w-full"
                       ></video>
                       <div className="absolute top-0 w-full h-full"></div>
                     </div>

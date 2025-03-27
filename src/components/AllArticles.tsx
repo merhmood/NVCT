@@ -81,7 +81,7 @@ const AllArticles: React.FC = () => {
 
   return (
     <section className="w-5/6 max-w-5xl mx-auto">
-      <div className="flex items-start flex-wrap gap-2 lg:gap-4 justify-center lg:justify-start">
+      <div className="grid grid-cols-2 lg:grid-cols-3 items-start flex-wrap gap-2 lg:gap-4 justify-between lg:justify-start ">
         {renderedArticles.length > 0 ? (
           renderedArticles.map((article, index) => (
             <React.Fragment key={index}>
@@ -92,7 +92,7 @@ const AllArticles: React.FC = () => {
                   <div className="relative mb-3">
                     <video
                       src={article.video}
-                      className="rounded-md object-cover h-24 md:h-36 w-full"
+                      className="rounded-md object-cover max-h-40 md:h-36 w-full"
                     ></video>
                     <div className="absolute top-0 w-full h-full"></div>
                   </div>
