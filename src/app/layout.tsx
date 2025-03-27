@@ -16,6 +16,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta
+          name="6a97888e-site-verification"
+          content="96a5010eea1435db6f7abdbdb276d15e"
+        ></meta>
+      </head>
       <body className={`${satoshi.className} bg-[#181717] text-white`}>
         {children}
       </body>
