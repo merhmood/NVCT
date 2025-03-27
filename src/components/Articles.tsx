@@ -63,11 +63,15 @@ const Articles = ({
                     </p>
                   </Link>
                 </article>
-                {(index + 1) % 3 === 0 && (
-                  <div className="basis-36 md:basis-80 mb-6 shrink-0 grow">
-                    Ads
+                {/* {(index + 1) % 3 === 0 && (
+                  <div className="relative basis-36 md:basis-80 mb-6 shrink-0 grow">
+                    <iframe
+                      src="//a.magsrv.com/iframe.php?idzone=5571162&size=300x250"
+                      className="object-contain"
+                    ></iframe>
+                    <p className="absolute top-0 left-2 font-bold">Ads</p>
                   </div>
-                )}
+                )} */}
               </React.Fragment>
             ))
           ) : !offline ? (

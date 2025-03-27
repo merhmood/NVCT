@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 import { satoshi } from "@/utils/font";
+import PopUnderAds from "@/components/PopUnderAds";
+import BannerAds from "@/components/BannerAds";
 
 export const metadata: Metadata = {
   title: "Nutty Vibes",
@@ -24,6 +26,8 @@ export default function RootLayout({
       </head>
       <body className={`${satoshi.className} bg-[#181717] text-white`}>
         {children}
+        <BannerAds />
+        <PopUnderAds />
       </body>
     </html>
   );

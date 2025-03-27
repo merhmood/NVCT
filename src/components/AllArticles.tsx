@@ -101,9 +101,6 @@ const AllArticles: React.FC = () => {
                   </p>
                 </Link>
               </article>
-              {(index + 1) % 3 === 0 && (
-                <div className="basis-36 md:basis-80 mb-6 shrink-0">Ads</div>
-              )}
             </React.Fragment>
           ))
         ) : !offline ? (

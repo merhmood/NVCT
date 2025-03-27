@@ -39,14 +39,13 @@ export default function Page() {
       <div>
         <Navigation />
         <div className="mt-28 lg:mt-32 w-5/6 max-w-5xl mx-auto">
-          <Link
-            href="https://www.instagram.com/nutty__vibes"
-            className="lg:hidden text-blue-700 text-sm my-4 text-center"
-            target="_blank"
-          >
-            Follow us on Instagram.
-          </Link>
-          <div className="mt-1 mb-5">Ads Space</div>
+          {/* <div className="relative mt-1 mb-5">
+            <iframe
+              src="//a.magsrv.com/iframe.php?idzone=5571162&size=300x250"
+              className="object-contain"
+            ></iframe>
+            <p className="absolute top-0 left-2 font-bold">Ads</p>
+          </div> */}
         </div>
         <Articles
           articles={[...articles].reverse().slice(0, 3)}

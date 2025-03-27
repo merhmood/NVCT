@@ -1,17 +1,41 @@
 "use client";
 
-import React, { Suspense, useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState, useRef } from "react";
 import { usePathname } from "next/navigation";
 import VideoJS from "./VideoJS";
 
 import { ArticleType } from "@/types";
 import Link from "next/link";
 import jaccardSimilarity from "@/utils/jaccardSimilarity";
+import fluidPlayer from "fluid-player";
 
 const Article = () => {
   const id = usePathname().split("/")[1]; // extracts article id from url path;
   const [article, setArticle] = useState<ArticleType>();
   const [moreArticles, setMoreArticles] = useState<ArticleType[]>();
+
+  let self = useRef<HTMLVideoElement>(null);
+  let player: FluidPlayerInstance | null = null;
+
+  useEffect(() => {
+    if (!player) {
+      if (self.current) {
+        player = fluidPlayer(self.current, {
+          layoutControls: {
+            primaryColor: "#ff99f3",
+          },
+          vastOptions: {
+            adList: [
+              {
+                roll: "preRoll",
+                vastTag: "https://s.magsrv.com/v1/vast.php?idzone=5571152",
+              },
+            ],
+          },
+        });
+      }
+    }
+  });
 
   useEffect(() => {
     // Request articles and filter out the article chosen to read
@@ -44,19 +68,6 @@ const Article = () => {
     })();
   }, [id]);
 
-  const videoJsOptions = {
-    autoplay: false,
-    controls: true,
-    responsive: true,
-    fluid: true,
-    sources: [
-      {
-        src: "/home.mp4",
-        type: "video/mp4",
-      },
-    ],
-  };
-
   return article ? (
     <section className="flex flex-col-reverse h-fit lg:gap-10 lg:flex-row lg:justify-between mt-24 lg:mt-32 mx-auto max-w-6xl w-5/6">
       <div className="basis-4/5">
@@ -76,19 +87,16 @@ const Article = () => {
                 ))
               : "Unknown"}
           </div>
-          <div className="">
+          <div className="w-full">
             {article && (
-              <VideoJS
-                options={{
-                  ...videoJsOptions,
-                  sources: [
-                    {
-                      src: article.video,
-                      type: "video/mp4",
-                    },
-                  ],
-                }}
-              />
+              <video ref={self} className="w-full">
+                <source
+                  src={article.video}
+                  data-fluid-hd
+                  title={article.title}
+                  type="video/mp4"
+                />
+              </video>
             )}
           </div>
           <div className="w-fit px-3 py-1 mt-4 bg-[#611364] text-[#fff]">
@@ -129,9 +137,9 @@ const Article = () => {
             </div>
           </div>
         </div>
-        <div className="mt-5 mb-2">Ads space</div>
+        <div className="mt-5 mb-2"></div>
       </div>
-      <div className="basis-1/5 mb-5 lg:mb-0">Ads space</div>
+      <div className="basis-1/5 mb-5 lg:mb-0"></div>
     </section>
   ) : (
     <div className="my-10">Loading Article</div>
