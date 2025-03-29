@@ -28,13 +28,13 @@ const Article = () => {
   }, [id]);
 
   return article ? (
-    <section className="flex flex-col-reverse h-fit lg:gap-10 lg:flex-row lg:justify-between mt-24 lg:mt-32 mx-auto max-w-6xl w-11/12 lg:w-5/6">
+    <section className="flex flex-col-reverse h-fit lg:gap-10 lg:flex-row lg:justify-between mt-36 lg:mt-32">
       <div className="basis-4/5">
         <Suspense fallback={<div className="my-10">Loading Article</div>}>
-          <h2 className="mt-2 mb-3 lg:mb-5 text-base lg:text-2xl font-semibold">
+          <h2 className="mt-2 lg:mb-2 text-base lg:text-2xl font-semibold">
             {article?.title}
           </h2>
-          <div className="flex flex-wrap w-fit my-4 gap-2">
+          <div className="flex flex-wrap w-fit my-2 gap-1 lg:gap-2 lg:mb-4 ">
             {article && article.tags.length > 0
               ? article.tags.map((value, index) => (
                   <p
@@ -58,7 +58,7 @@ const Article = () => {
               </video>
             )}
           </div>
-          <div className="w-fit px-3 py-1 mt-4 bg-[#611364] text-[#fff]">
+          <div className="w-fit px-3 py-1 bg-[#611364] text-[#fff] lg:mt-3 lg:mb-4">
             Creator(s):{" "}
             {article && article.creators.length > 0
               ? article.creators.map(
@@ -68,7 +68,7 @@ const Article = () => {
               : "Unknown"}
           </div>
         </Suspense>
-        <div className="mt-8 lg:mt12 w-full">
+        <div className="mt-2 w-full">
           <h3 className="mb-2">More Videos for you</h3>
           <div className="overflow-x-scroll lg:overflow-hidden article-scroll">
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 lg:gap-4">

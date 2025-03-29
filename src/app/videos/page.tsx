@@ -7,7 +7,6 @@ import Articles from "@/components/Articles";
 import Footer from "@/components/Footer";
 
 import type { ArticleType } from "@/types";
-import Link from "next/link";
 import BannerAds from "@/components/BannerAds";
 
 export default function Page() {
@@ -36,21 +35,17 @@ export default function Page() {
   }, []);
 
   return (
-    <main className="flex flex-col justify-between h-screen">
+    <main>
       <div>
-        <Navigation />
-        <div className="mt-28 lg:mt-32 h-[20vh] w-5/6 max-w-5xl mx-auto">
-          <BannerAds />
-        </div>
+        <div className="mt-36 lg:mt-32"></div>
+        <BannerAds />
         <Articles
           articles={articles}
           ads={innerWidth && innerWidth < 800 ? 6 : 8}
           wrap
           showAll
         />
-        <div></div>
       </div>
-      <Footer />
     </main>
   );
 }

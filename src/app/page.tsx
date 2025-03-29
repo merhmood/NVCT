@@ -35,29 +35,24 @@ export default function Page() {
   }, []);
 
   return (
-    <main className="flex flex-col justify-between h-screen">
-      <div className="mt-28 lg:mt-32 ">
-        <Navigation />
-        <Articles
-          articles={[...articles].reverse().slice(0, 4)}
-          title="Newly Updated"
-        />
-        <div className="my-8 h-[20vh] w-5/6 max-w-5xl mx-auto">
-          <BannerAds />
-        </div>
-        <Articles
-          articles={
-            // Pass 3 articles for large screen and 4 articles for small screen
-            innerWidth && innerWidth < 800
-              ? articles.slice(0, 8)
-              : articles.slice(0, 10)
-          }
-          ads={innerWidth && innerWidth < 800 ? 6 : 8}
-          title="Older videos"
-          wrap
-        />
-      </div>
-      <Footer />
+    <main>
+      <div className="mt-36 lg:mt-32"></div>
+      <BannerAds />
+      <Articles
+        articles={[...articles].reverse().slice(0, 4)}
+        title="New Videos"
+      />
+      <Articles
+        articles={
+          // Pass 3 articles for large screen and 4 articles for small screen
+          innerWidth && innerWidth < 800
+            ? [...articles].sort((a, b) => 0.5 - Math.random()).slice(0, 8)
+            : [...articles].sort((a, b) => 0.5 - Math.random()).slice(0, 10)
+        }
+        ads={innerWidth && innerWidth < 800 ? 6 : 8}
+        title="Older videos"
+        wrap
+      />
     </main>
   );
 }

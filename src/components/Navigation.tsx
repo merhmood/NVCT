@@ -1,31 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 import { ollifiaPoettry } from "@/utils/font";
 
-const NAV_LINKS = ["Home", "BizScribes", "Upcoming"];
-
 const Navigation: React.FC = () => {
-  const pathName = usePathname();
-  const pathNameLength = pathName.split("/").length;
-
-  const isActive = (href: string) => pathName === href;
-
-  const setStyleForActiveLink = (link: string) => {
-    const href = setHref(link);
-    return `${
-      isActive(href) ? "font-semibold" : ""
-    } mr-4 lg:pb-3 text-md lg:text-lg`;
-  };
-
-  const setHref = (link: string) =>
-    link === "Home" ? "/" : `/${link.toLowerCase()}`;
-
   return (
     <header className="bg-[#181717a1] backdrop-blur-lg fixed top-0 w-full z-10 pb-2">
-      <section className="flex flex-col items-center lg:flex-row lg:justify-between lg:items-center mt-7 pb-2 lg:pb-3 mx-auto max-w-6xl w-5/6">
+      <section className="flex flex-col items-center lg:flex-row lg:justify-between lg:items-center mt-7 pb-2 lg:pb-3 mx-auto max-w-6xl">
         <h2
           className={`${ollifiaPoettry.className} text-white text-3xl lg:text-4xl text-center lg:text-left`}
         >
@@ -33,19 +16,24 @@ const Navigation: React.FC = () => {
             <span className=" text-[#ac3fa3]">Nutty</span>Vibes
           </Link>
         </h2>
-        {/* {pathNameLength < 3 && (
-          <nav className="flex justify-between mt-7 lg:mt-0">
-            {NAV_LINKS.map((link, index) => (
-              <Link
-                href={setHref(link)}
-                key={index}
-                className={setStyleForActiveLink(link)}
-              >
-                {link}
-              </Link>
-            ))}
-          </nav>
-        )} */}
+        <div className="relative flex justify-center mt-3 lg:-mt-2 w-5/6 lg:w-3/6">
+          <input
+            type="text"
+            className="block py-2 pl-10 lg:pl-6 pr-3 bg-white/15 rounded-full text-sm lg:text-base w-full border-none outline-none focus:outline-[#ac3fa3]"
+            placeholder="Search Videos"
+          />
+          <div className="lg:hidden absolute flex items-center h-full left-3">
+            <div className="relative h-4 w-4 lg:h-5 lg:w-5 mr-2">
+              <Image src="/search.png" alt="search" objectFit="cover" fill />
+            </div>
+          </div>
+          <div className="hidden lg:flex absolute items-center h-full right-3">
+            <div className="relative h-4 w-4 lg:h-5 lg:w-5 mr-2">
+              <Image src="/search.png" alt="search" objectFit="cover" fill />
+            </div>
+          </div>
+        </div>
+        <div></div>
       </section>
     </header>
   );

@@ -29,10 +29,8 @@ export default function page({ params, searchParams }: Props) {
   return (
     <main className="flex flex-col justify-between h-screen">
       <div>
-        <Navigation />
         <Article />
       </div>
-      <Footer />
     </main>
   );
 }

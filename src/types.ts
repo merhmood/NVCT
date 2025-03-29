@@ -1,11 +1,10 @@
-import { StaticImageData } from "next/image";
-
 type ArticleType = {
   id: string;
   video: string;
   title: string;
   duration: string;
   quality: string;
+  type: string;
   creators: string[];
   tags: string[];
   description: string;

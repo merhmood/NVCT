@@ -4,14 +4,16 @@ import { ollifiaPoettry } from "@/utils/font";
 const Footer = () => {
   const socialIcons = [
     {
-      image: "/social-icons/twitter.png",
       url: "https://x.com/nuttyvibes",
       title: "Twitter",
     },
     {
-      image: "/social-icons/instagram.png",
       url: "https://www.instagram.com/nutty__vibes",
       title: "Instagram",
+    },
+    {
+      url: "#",
+      title: "Telegram",
     },
   ];
   return (
@@ -25,14 +27,6 @@ const Footer = () => {
           {socialIcons.map((socialIcon, index) => (
             <>
               <a key={index} href={socialIcon.url}>
-                {/* <div className="relative h-7 w-7 ml-3">
-                <Image
-                  src={socialIcon.image}
-                  alt={socialIcon.title}
-                  objectFit="cover"
-                  fill
-                />
-              </div> */}
                 {socialIcon.title}
               </a>
               {index < socialIcons.length - 1 && (

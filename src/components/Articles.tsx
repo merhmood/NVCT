@@ -28,7 +28,7 @@ const Articles = ({
   }, []);
 
   return articles && articles.length > 0 ? (
-    <section className="w-11/12 lg:w-5/6 max-w-5xl h-fit mx-auto mb-10 lg:mb-8">
+    <section className="mb-10 lg:mb-8">
       <h2 className=" mb-4 text-lg lg:text-2xl font-semibold">{title}</h2>
       <div className="w-full overflow-x-scroll lg:overflow-hidden article-scroll">
         {" "}
@@ -37,7 +37,7 @@ const Articles = ({
             <React.Fragment key={index}>
               <ArticleItem article={article} />
               {index + 1 === ads && wrap && (
-                <div className="col-span-2 md:col-span-3 lg:col-span-4 relative h-28 md:h-36 w-full mb-3">
+                <div className="col-span-2 md:col-span-3 lg:col-span-4 relative w-full mb-5">
                   <BannerAds />
                 </div>
               )}
@@ -48,7 +48,7 @@ const Articles = ({
       {wrap && !showAll && (
         <div className="mt-4 py-3 rounded-full bg-[#6d2867]">
           <Link
-            href={"/all-videos"}
+            href={"/videos"}
             className="block w-full text-[#fff] text-base lg:text-lg text-center hover:font-bold"
           >
             See more videos
