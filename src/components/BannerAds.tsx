@@ -4,13 +4,14 @@ import Script from "next/script";
 
 const BannerAds = () => {
   return (
-    <>
-      <Script id="ads-banner" async src="https://a.magsrv.com/ad-provider.js" />
-      <ins className="eas6a97888e2" data-zoneid="5571162"></ins>
-      <Script id="ads-banner-details">
-        {`(AdProvider = window.AdProvider || []).push({"serve": {}})`}
-      </Script>
-    </>
+    <div className="relative mt-1 mb-5">
+      <iframe
+        src="//a.magsrv.com/iframe.php?idzone=5571162&size=auto"
+        width="100%"
+        height="100%"
+      ></iframe>
+      <p className="absolute top-0 left-2 font-bold">Ads</p>
+    </div>
   );
 };
 

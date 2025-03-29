@@ -4,6 +4,7 @@ type ArticleType = {
   id: string;
   video: string;
   title: string;
+  duration: string;
   creators: string[];
   tags: string[];
   description: string;
