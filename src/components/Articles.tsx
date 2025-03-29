@@ -28,7 +28,7 @@ const Articles = ({
   }, []);
 
   return articles && articles.length > 0 ? (
-    <section className="w-5/6 max-w-5xl h-fit mx-auto mb-10 lg:mb-8">
+    <section className="w-11/12 lg:w-5/6 max-w-5xl h-fit mx-auto mb-10 lg:mb-8">
       <h2 className=" mb-4 text-lg lg:text-2xl font-semibold">{title}</h2>
       <div className="w-full overflow-x-scroll lg:overflow-hidden article-scroll">
         {" "}

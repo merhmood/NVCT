@@ -28,7 +28,7 @@ const Article = () => {
   }, [id]);
 
   return article ? (
-    <section className="flex flex-col-reverse h-fit lg:gap-10 lg:flex-row lg:justify-between mt-24 lg:mt-32 mx-auto max-w-6xl w-5/6">
+    <section className="flex flex-col-reverse h-fit lg:gap-10 lg:flex-row lg:justify-between mt-24 lg:mt-32 mx-auto max-w-6xl w-11/12 lg:w-5/6">
       <div className="basis-4/5">
         <Suspense fallback={<div className="my-10">Loading Article</div>}>
           <h2 className="mt-2 mb-3 lg:mb-5 text-base lg:text-2xl font-semibold">
