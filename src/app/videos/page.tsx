@@ -11,7 +11,7 @@ import BannerAds from "@/components/BannerAds";
 
 export default function Page() {
   const searchParams = useSearchParams();
-  const query = searchParams.get("video");
+  const query = searchParams.get("video")?.replaceAll("+", " ");
 
   const [finishLoading, setFinishLoading] = useState(false);
   const [articles, setArticles] = useState<Array<ArticleType>>([]);
@@ -67,9 +67,8 @@ export default function Page() {
             : filteredArticles.length <= 0 && query
             ? []
             : [...articles]
-          //.sort((a, b) => 0.8 - Math.random())
         }
-        ads={innerWidth && innerWidth < 800 ? 6 : 8}
+        ads={innerWidth && innerWidth < 800 ? 4 : 8}
         wrap
         showAll
         showLoader

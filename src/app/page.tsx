@@ -33,6 +33,9 @@ export default function Page() {
     }
   }, []);
 
+  const spliceArticles = [...articles];
+  spliceArticles.splice(-4);
+
   return (
     <main>
       <div className="mt-36 lg:mt-32"></div>
@@ -49,12 +52,8 @@ export default function Page() {
           // small screen while removing the last 4 items
           // (new videos)
           innerWidth && innerWidth < 800
-            ? [...articles.splice(-4)]
-                .sort((a, b) => 0.5 - Math.random())
-                .slice(0, 8)
-            : [...articles.splice(-4)]
-                .sort((a, b) => 0.5 - Math.random())
-                .slice(0, 10)
+            ? spliceArticles.sort((a, b) => 0.5 - Math.random()).slice(0, 8)
+            : spliceArticles.sort((a, b) => 0.5 - Math.random()).slice(0, 10)
         }
         ads={innerWidth && innerWidth < 800 ? 6 : 8}
         title="More videos"

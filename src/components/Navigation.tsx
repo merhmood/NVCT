@@ -20,14 +20,20 @@ const Navigation: React.FC = () => {
   ) => {
     if (searchValue !== "") {
       if (e.key === "Enter") {
-        window.location.href = `/videos?video=${searchValue}`;
+        window.location.href = `/videos?video=${searchValue.replaceAll(
+          " ",
+          "+"
+        )}`;
       }
     }
   };
 
   const handleSearchWithSearchIcon = () => {
     if (searchValue !== "")
-      window.location.href = `/videos?video=${searchValue}`;
+      window.location.href = `/videos?video=${searchValue.replaceAll(
+        " ",
+        "+"
+      )}`;
   };
 
   return (
@@ -62,6 +68,8 @@ const Navigation: React.FC = () => {
             </div>
           </div>
         </div>
+        {/* Keeps the input in middle */}
+        <div></div>
       </section>
     </header>
   );
