@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { ArticleType } from "@/types";
 import ArticleItem from "./ArticleItem";
 import BannerAds from "./BannerAds";
@@ -16,6 +15,7 @@ const Articles = ({
   ads,
   showAll,
   showLoader,
+  finishLoading,
 }: {
   articles: ArticleType[];
   title?: string;
@@ -23,13 +23,14 @@ const Articles = ({
   ads?: number;
   showAll?: boolean;
   showLoader?: boolean;
+  finishLoading?: boolean;
 }) => {
   const [offline, setOffline] = useState(false);
   useEffect(() => {
     offlineHandler(setOffline);
   }, []);
 
-  return articles && articles.length > 0 ? (
+  return articles && articles.length > 0 && finishLoading ? (
     <section className="mb-10 lg:mb-8">
       <h2 className=" mb-4 text-lg lg:text-2xl font-semibold">{title}</h2>
       <div className="w-full overflow-x-scroll lg:overflow-hidden article-scroll">
@@ -58,6 +59,10 @@ const Articles = ({
         </div>
       )}
     </section>
+  ) : articles.length <= 0 && finishLoading ? (
+    <p className="text-center">
+      Sorry no video, try searching for something else 😅
+    </p>
   ) : !offline ? (
     showLoader && <Loader />
   ) : (

@@ -1,11 +1,35 @@
 "use client";
 
+import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 
 import { ollifiaPoettry } from "@/utils/font";
 
 const Navigation: React.FC = () => {
+  const searchParams = useSearchParams();
+  const video = searchParams.get("video");
+
+  const [searchValue, setSearchValue] = useState<string>(
+    video ? (video as string) : ""
+  );
+
+  const handleSearchWithEnterKey = (
+    e: React.KeyboardEvent<HTMLInputElement>
+  ) => {
+    if (searchValue !== "") {
+      if (e.key === "Enter") {
+        window.location.href = `/videos?video=${searchValue}`;
+      }
+    }
+  };
+
+  const handleSearchWithSearchIcon = () => {
+    if (searchValue !== "")
+      window.location.href = `/videos?video=${searchValue}`;
+  };
+
   return (
     <header className="bg-[#181717a1] backdrop-blur-lg fixed top-0 w-full z-10 pb-2">
       <section className="flex flex-col items-center lg:flex-row lg:justify-between lg:items-center mt-7 pb-2 lg:pb-3 mx-auto max-w-6xl">
@@ -21,19 +45,23 @@ const Navigation: React.FC = () => {
             type="text"
             className="block py-2 pl-10 lg:pl-6 pr-3 bg-white/15 rounded-full text-sm lg:text-base w-full border-none outline-none focus:outline-[#ac3fa3]"
             placeholder="Search Videos"
+            onKeyDown={handleSearchWithEnterKey}
+            onChange={(e) => setSearchValue(e.target.value)}
+            value={searchValue}
           />
-          <div className="lg:hidden absolute flex items-center h-full left-3">
-            <div className="relative h-4 w-4 lg:h-5 lg:w-5 mr-2">
-              <Image src="/search.png" alt="search" objectFit="cover" fill />
+          <div onClick={handleSearchWithSearchIcon} className="cursor-pointer">
+            <div className="lg:hidden absolute flex items-center h-full left-3">
+              <div className="relative h-4 w-4 lg:h-5 lg:w-5 mr-2">
+                <Image src="/search.png" alt="search" objectFit="cover" fill />
+              </div>
             </div>
-          </div>
-          <div className="hidden lg:flex absolute items-center h-full right-3">
-            <div className="relative h-4 w-4 lg:h-5 lg:w-5 mr-2">
-              <Image src="/search.png" alt="search" objectFit="cover" fill />
+            <div className="hidden lg:flex absolute items-center h-full right-3">
+              <div className="relative h-4 w-4 lg:h-5 lg:w-5 mr-2">
+                <Image src="/search.png" alt="search" objectFit="cover" fill />
+              </div>
             </div>
           </div>
         </div>
-        <div></div>
       </section>
     </header>
   );
