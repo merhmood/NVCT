@@ -3,8 +3,6 @@ import type { Metadata, ResolvingMetadata } from "next";
 import { ArticleType, Props } from "@/types";
 
 import Article from "@/components/Article";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
 import { BASE_URL } from "@/url";
 
 export async function generateMetadata(
@@ -17,9 +15,8 @@ export async function generateMetadata(
   const article: ArticleType[] = response.articles.filter(
     (article: ArticleType) => article.id === id
   ); // extracts the article based on the article id;
-
   return {
-    title: article[0] ? article[0].title : "",
+    title: article[0] ? article[0].title : `${article}`,
     keywords: article[0] ? [...article[0].tags, ...article[0].creators] : [],
     description: article[0] ? article[0].description : "",
   };

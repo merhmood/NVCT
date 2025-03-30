@@ -15,12 +15,14 @@ const Articles = ({
   wrap,
   ads,
   showAll,
+  showLoader,
 }: {
   articles: ArticleType[];
   title?: string;
   wrap?: boolean;
   ads?: number;
   showAll?: boolean;
+  showLoader?: boolean;
 }) => {
   const [offline, setOffline] = useState(false);
   useEffect(() => {
@@ -51,13 +53,13 @@ const Articles = ({
             href={"/videos"}
             className="block w-full text-[#fff] text-base lg:text-lg text-center hover:font-bold"
           >
-            See more videos
+            See more
           </Link>
         </div>
       )}
     </section>
   ) : !offline ? (
-    <Loader />
+    showLoader && <Loader />
   ) : (
     <Offline />
   );

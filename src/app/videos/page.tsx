@@ -2,9 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 
-import Navigation from "@/components/Navigation";
 import Articles from "@/components/Articles";
-import Footer from "@/components/Footer";
 
 import type { ArticleType } from "@/types";
 import BannerAds from "@/components/BannerAds";
@@ -40,10 +38,11 @@ export default function Page() {
         <div className="mt-36 lg:mt-32"></div>
         <BannerAds />
         <Articles
-          articles={articles}
+          articles={[...articles].sort((a, b) => 0.8 - Math.random())}
           ads={innerWidth && innerWidth < 800 ? 6 : 8}
           wrap
           showAll
+          showLoader
         />
       </div>
     </main>

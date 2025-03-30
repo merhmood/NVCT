@@ -41,6 +41,7 @@ export default function Page() {
       <Articles
         articles={[...articles].reverse().slice(0, 4)}
         title="New Videos"
+        showLoader
       />
       <Articles
         articles={
@@ -50,7 +51,7 @@ export default function Page() {
             : [...articles].sort((a, b) => 0.5 - Math.random()).slice(0, 10)
         }
         ads={innerWidth && innerWidth < 800 ? 6 : 8}
-        title="Older videos"
+        title="More videos"
         wrap
       />
     </main>
