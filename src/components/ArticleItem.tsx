@@ -9,12 +9,14 @@ const ArticleItem = ({ article }: { article: ArticleType }) => {
         <div
           className={`rounded-md relative bg-black h-28 md:h-36 w-full mb-3 `}
         >
-          <video
-            src={article.video}
-            className={`rounded-md ${
-              article.type === "Desktop" ? "object-cover" : "object-contain"
-            } w-full h-full shadow-[#ac3fa34b] shadow`}
-          ></video>
+          {navigator.onLine && (
+            <video
+              src={article.video}
+              className={`rounded-md ${
+                article.type === "Desktop" ? "object-cover" : "object-contain"
+              } w-full h-full shadow-[#ac3fa34b] shadow`}
+            ></video>
+          )}
           <div className="flex text-xs lg:text-sm justify-end absolute top-0 w-full h-full pt-2 pr-2">
             <span className="block bg-[#6d2867]/45 h-fit px-2 py-1 rounded-md">
               {article.quality}
