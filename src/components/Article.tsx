@@ -11,7 +11,7 @@ import BannerAds from "./BannerAds";
 import Loader from "./Loader";
 
 const Article = () => {
-  const id = usePathname().split("/")[1]; // extracts article id from url path;
+  const id = usePathname().split("/")[2]; // extracts article id from url path;
   const [article, setArticle] = useState<ArticleType>();
   const [moreArticles, setMoreArticles] = useState<ArticleType[]>();
   const adsCounter = [1, 2];
@@ -138,8 +138,6 @@ function articleFetch(
       (article: ArticleType) => article.id === id
     );
 
-    console.log(response);
-
     // Get similar articles to clicked article
     const moreArticles: ArticleType[] = [];
     for (let i = 0; i < response.articles.length - 1; i++) {
@@ -157,7 +155,7 @@ function articleFetch(
     }
 
     setMoreArticles(
-      innerHeight < 800 ? moreArticles.slice(0, 3) : moreArticles.splice(0, 7)
+      innerWidth < 800 ? moreArticles.slice(0, 3) : moreArticles.splice(0, 7)
     );
     setArticle(article[0]);
   })();
