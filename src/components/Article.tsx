@@ -25,10 +25,11 @@ const Article = () => {
   useEffect(() => {
     const innerWidth = window.innerWidth;
     articleFetch(id, setMoreArticles, setArticle, innerWidth);
+    window.scrollTo({ top: 0 });
   }, [id]);
 
   return article ? (
-    <section className="flex flex-col-reverse h-fit lg:gap-10 lg:flex-row lg:justify-between mt-36 lg:mt-32">
+    <section className="flex flex-col-reverse h-fit lg:gap-10 lg:flex-row lg:justify-between mt-32">
       <div className="basis-4/5">
         <Suspense fallback={<div className="my-10">Loading Article</div>}>
           <h2 className="mt-2 lg:mb-2 text-base lg:text-2xl font-semibold">
