@@ -20,8 +20,8 @@ const Footer = () => {
     <footer className="bg-[#6d2867] text-white mt-4 lg:mt-16 py-8 lg:py-6">
       <div className="w-5/6 lg:w-11/12 max-w-7xl mx-auto flex flex-col justify-center items-center lg:flex-row lg:justify-between lg:items-center">
         <div className=" lg:text-2xl">
-          <span className={ollifiaPoettry.className}>Copyright</span> of{" "}
-          <span className="">Nutty Vibes</span>
+          <span className="text-lg">&copy;</span>{" "}
+          <span className="">Nutty Vibes {new Date().getFullYear()}</span>
         </div>
         <div className="flex mt-1 lg:mt-0">
           {socialIcons.map((socialIcon, index) => (

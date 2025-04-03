@@ -60,7 +60,7 @@ const Article = () => {
             )}
           </div>
           <div className="w-fit px-3 py-1 bg-[#611364] text-[#fff] lg:mt-3 lg:mb-4">
-            Creator(s):{" "}
+            Performers(s):{" "}
             {article && article.creators.length > 0
               ? article.creators.map(
                   (value, index) =>

@@ -79,14 +79,6 @@ const Articles = ({
               First
             </button>
 
-            <button
-              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-              disabled={currentPage === 1}
-              className="px-3 py-1 border bg-transparent rounded-md disabled:hidden"
-            >
-              Prev
-            </button>
-
             {[...Array(totalPages)].map((_, index) => (
               <button
                 key={index}
@@ -100,16 +92,6 @@ const Articles = ({
                 {index + 1}
               </button>
             ))}
-
-            <button
-              onClick={() =>
-                setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-              }
-              disabled={currentPage === totalPages}
-              className="px-3 py-1 border bg-transparent rounded-md disabled:hidden"
-            >
-              Next
-            </button>
 
             <button
               onClick={() => setCurrentPage(totalPages)}

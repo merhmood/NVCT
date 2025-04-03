@@ -1,8 +1,18 @@
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+
 import { ArticleType } from "@/types";
 
 const ArticleItem = ({ article }: { article: ArticleType }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.currentTime = 0.1;
+    }
+  }, []);
+
   return (
     <article className={`md:basis-80 shrink-0 grow-0 rounded-lg`}>
       <Link href={`/videos/${article.id}`} className="block">
@@ -11,6 +21,10 @@ const ArticleItem = ({ article }: { article: ArticleType }) => {
         >
           {navigator.onLine && (
             <video
+              muted
+              playsInline
+              preload="metadata"
+              ref={videoRef}
               src={article.video}
               className={`rounded-md ${
                 article.type === "Desktop" ? "object-cover" : "object-contain"

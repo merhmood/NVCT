@@ -20,21 +20,18 @@ const Navigation: React.FC = () => {
   ) => {
     if (searchValue !== "") {
       if (e.key === "Enter") {
-        window.location.href = `/videos?video=${searchValue.replaceAll(
-          " ",
-          "+"
-        )}`;
+        window.location.href = `/videos?video=${fixSearchValue(searchValue)}`;
       }
     }
   };
 
   const handleSearchWithSearchIcon = () => {
     if (searchValue !== "")
-      window.location.href = `/videos?video=${searchValue.replaceAll(
-        " ",
-        "+"
-      )}`;
+      window.location.href = `/videos?video=${fixSearchValue(searchValue)}`;
   };
+
+  const fixSearchValue = (searchValue: string) =>
+    searchValue.trim().replaceAll(" ", "+");
 
   return (
     <header className="bg-[#181717a1] backdrop-blur-lg fixed top-0 w-full z-10 pb-2">
