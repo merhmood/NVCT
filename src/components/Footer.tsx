@@ -5,7 +5,7 @@ import Link from "next/link";
 const Footer = () => {
   const socialIcons = [
     {
-      url: "https://x.com/nuttyvibes",
+      url: "https://x.com/nutty_vibes",
       title: "Twitter",
     },
     {
@@ -13,7 +13,7 @@ const Footer = () => {
       title: "Instagram",
     },
     {
-      url: "#",
+      url: "https://t.me/NuttNVibes",
       title: "Telegram",
     },
   ];
@@ -38,8 +38,9 @@ const Footer = () => {
             </>
           ))}
         </div>
-        <div className="mt-2 opacity-80">
+        <div className="mt-2 flex gap-3 lg:gap-4 opacity-80">
           <Link href="/dmca">DMCA</Link>
+          <Link href="/policy">Policy</Link>
         </div>
       </div>
     </footer>

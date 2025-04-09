@@ -5,31 +5,21 @@ import Link from "next/link";
 import { ArticleType } from "@/types";
 
 const ArticleItem = ({ article }: { article: ArticleType }) => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    if (videoRef.current && article.thumbnailFrame) {
-      videoRef.current.currentTime = article.thumbnailFrame;
-    }
-  }, [article.thumbnailFrame]);
-
   return (
     <article className={`md:basis-80 shrink-0 grow-0 rounded-lg`}>
       <Link href={`/videos/${article.id}`} className="block">
         <div
-          className={`rounded-md relative bg-black h-28 md:h-36 w-full mb-3 `}
+          className={`relative rounded-md bg-black h-28 md:h-36 w-full mb-3 `}
         >
           {navigator.onLine && (
-            <video
-              muted
-              playsInline
-              preload="metadata"
-              ref={videoRef}
-              src={article.video}
+            <Image
+              alt={article.title}
+              src={article.thumbnail}
+              fill
               className={`rounded-md ${
                 article.type === "landscape" ? "object-cover" : "object-contain"
               } w-full h-full shadow-[#ac3fa34b] shadow`}
-            ></video>
+            />
           )}
           <div className="flex text-xs lg:text-sm justify-end absolute top-0 w-full h-full pt-2 pr-2">
             <span className="block bg-[#6d2867]/45 h-fit px-2 py-1 rounded-md">

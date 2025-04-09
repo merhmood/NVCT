@@ -17,12 +17,7 @@ export default function Page() {
     (async () => {
       const data = await fetch("/data.json");
       const response: { articles: [] } = await data.json();
-      setArticles(
-        response.articles.map((article: any) => ({
-          ...article,
-          thumbnailFrame: article["thumbnail-frame"],
-        }))
-      );
+      setArticles(response.articles);
       setFinishLoading(true);
     })();
   }, []);
@@ -45,6 +40,7 @@ export default function Page() {
     <main>
       <div className="mt-36 lg:mt-32"></div>
       <BannerAds />
+      <div className="mt-6"></div>
       <Articles
         articles={[...articles].reverse().slice(0, 4)}
         title="New Videos"

@@ -19,6 +19,26 @@ export async function generateMetadata(
     title: article[0] ? article[0].title : `${article}`,
     keywords: article[0] ? [...article[0].tags, ...article[0].creators] : [],
     description: article[0] ? article[0].description : "",
+    icons: "/logo.jpg",
+    twitter: {
+      card: "player",
+      title: article[0] ? article[0].title : "",
+      description: article[0] ? article[0].description : "",
+      images: "/logo.jpg",
+      players: [
+        {
+          streamUrl: `/${article[0].video}`,
+          playerUrl: `/videos/${id}`,
+          width: 640,
+          height: 360,
+        },
+      ],
+    },
+    openGraph: {
+      title: article[0] ? article[0].title : "",
+      description: article[0] ? article[0].description : "",
+      url: `/videos/${id}`,
+    },
   };
 }
 

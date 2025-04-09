@@ -1,16 +1,25 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
 import { satoshi } from "@/utils/font";
 import PopUnderAds from "@/components/PopUnderAds";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Nutty Vibes",
   description: "Best website for your amazing Adult content",
   icons: "/logo.jpg",
+  twitter: {
+    images: "/logo.jpg",
+    card: "summary_large_image",
+    site: "@nutty_vibes",
+    creator: "@nutty_vibes",
+    description: "Best website for your amazing Adult content",
+    title: "Nutty Vibes",
+  },
 };
 
 export default function RootLayout({
@@ -38,6 +47,7 @@ export default function RootLayout({
           <PopUnderAds />
         </Suspense>
       </body>
+      <GoogleAnalytics gaId="G-796EYQTS8W" />
     </html>
   );
 }

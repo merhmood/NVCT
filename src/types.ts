@@ -5,7 +5,7 @@ type ArticleType = {
   duration: string;
   quality: string;
   type: string;
-  thumbnailFrame: number;
+  thumbnail: string;
   creators: string[];
   tags: string[];
   description: string;

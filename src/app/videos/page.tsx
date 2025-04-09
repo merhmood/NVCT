@@ -26,12 +26,7 @@ export default function Page() {
     (async () => {
       const data = await fetch("/data.json");
       const response: { articles: [] } = await data.json();
-      setArticles(
-        response.articles.map((article: any) => ({
-          ...article,
-          thumbnailFrame: article["thumbnail-frame"],
-        }))
-      );
+      setArticles(response.articles);
 
       if (query && query !== "") {
         // Configure fuzzy search options

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/third-parties": "^15.3.0",
     "fluid-player": "^3.0.0",
     "framer-motion": "^12.6.3",
     "fuse.js": "^7.1.0",

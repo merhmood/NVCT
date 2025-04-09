@@ -60,7 +60,7 @@ const Article = () => {
             )}
           </div>
           <div className="w-fit px-3 py-1 bg-[#611364] text-[#fff] lg:mt-3 lg:mb-4">
-            Performers(s):{" "}
+            Model(s):{" "}
             {article && article.creators.length > 0
               ? article.creators.map(
                   (value, index) =>
@@ -135,12 +135,9 @@ function articleFetch(
   (async () => {
     const data = await fetch("/data.json");
     const response: { articles: ArticleType[] } = await data.json();
-    const article: ArticleType[] = response.articles
-      .map((article: any) => ({
-        ...article,
-        thumbnailFrame: article["thumbnail-frame"],
-      }))
-      .filter((article: ArticleType) => article.id === id);
+    const article: ArticleType[] = response.articles.filter(
+      (article: ArticleType) => article.id === id
+    );
 
     // Get similar articles to clicked article
     const moreArticles: ArticleType[] = [];
