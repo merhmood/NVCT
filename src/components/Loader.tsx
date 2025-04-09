@@ -2,17 +2,11 @@ import React from "react";
 
 const Loader = () => {
   return (
-    <div className="grid place-items-center w-full h-full -mt-4">
-      <div>
-        <video
-          className="h-16 w-16"
-          src="/loading.webM"
-          muted
-          autoPlay
-          loop
-        ></video>
+    <div className="flex items-center justify-center">
+      <div className="relative w-16 h-16">
+        <div className="absolute inset-0 rounded-full bg-[#6d2867] opacity-75 animate-ping"></div>
+        <div className="absolute inset-0 rounded-full bg-[#6d2867]"></div>
       </div>
-      <p className="text-sm text-center lg:text-base">Loading ...</p>
     </div>
   );
 };

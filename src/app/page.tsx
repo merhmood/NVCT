@@ -17,7 +17,12 @@ export default function Page() {
     (async () => {
       const data = await fetch("/data.json");
       const response: { articles: [] } = await data.json();
-      setArticles(response.articles);
+      setArticles(
+        response.articles.map((article: any) => ({
+          ...article,
+          thumbnailFrame: article["thumbnail-frame"],
+        }))
+      );
       setFinishLoading(true);
     })();
   }, []);
@@ -33,8 +38,8 @@ export default function Page() {
     }
   }, []);
 
-  const spliceArticles = [...articles];
-  spliceArticles.splice(-4);
+  const splitedArticles = [...articles];
+  splitedArticles.splice(-4);
 
   return (
     <main>
@@ -47,14 +52,7 @@ export default function Page() {
         finishLoading={finishLoading}
       />
       <Articles
-        articles={
-          // Pass 10 articles for large screen and 8 articles for
-          // small screen while removing the last 4 items
-          // (new videos)
-          innerWidth && innerWidth < 800
-            ? spliceArticles.sort((a, b) => 0.5 - Math.random()).slice(0, 8)
-            : spliceArticles.sort((a, b) => 0.5 - Math.random()).slice(0, 10)
-        }
+        articles={splitedArticles.sort((a, b) => 0.5 - Math.random())}
         ads={innerWidth && innerWidth < 800 ? 6 : 8}
         title="More videos"
         finishLoading={finishLoading}

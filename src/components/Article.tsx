@@ -114,7 +114,7 @@ function videoPlayerSetup(self: React.RefObject<HTMLVideoElement>) {
           adList: [
             {
               roll: "preRoll",
-              vastTag: "https://s.magsrv.com/v1/vast.php?idzone=5571152",
+              vastTag: "https://s.magsrv.com/v1/vast.php?idzone=5581748",
             },
           ],
         },
@@ -135,9 +135,12 @@ function articleFetch(
   (async () => {
     const data = await fetch("/data.json");
     const response: { articles: ArticleType[] } = await data.json();
-    const article: ArticleType[] = response.articles.filter(
-      (article: ArticleType) => article.id === id
-    );
+    const article: ArticleType[] = response.articles
+      .map((article: any) => ({
+        ...article,
+        thumbnailFrame: article["thumbnail-frame"],
+      }))
+      .filter((article: ArticleType) => article.id === id);
 
     // Get similar articles to clicked article
     const moreArticles: ArticleType[] = [];

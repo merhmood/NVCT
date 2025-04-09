@@ -23,7 +23,7 @@ export default function RootLayout({
       <head>
         <meta
           name="6a97888e-site-verification"
-          content="96a5010eea1435db6f7abdbdb276d15e"
+          content="d88d33993212a1703ace3c137f5a2eb8"
         ></meta>
       </head>
       <body

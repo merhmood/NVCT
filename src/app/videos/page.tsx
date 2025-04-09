@@ -26,7 +26,12 @@ export default function Page() {
     (async () => {
       const data = await fetch("/data.json");
       const response: { articles: [] } = await data.json();
-      setArticles(response.articles);
+      setArticles(
+        response.articles.map((article: any) => ({
+          ...article,
+          thumbnailFrame: article["thumbnail-frame"],
+        }))
+      );
 
       if (query && query !== "") {
         // Configure fuzzy search options
@@ -66,7 +71,7 @@ export default function Page() {
             ? filteredArticles
             : filteredArticles.length <= 0 && query
             ? []
-            : [...articles]
+            : [...articles].sort((a, b) => 0.5 - Math.random())
         }
         ads={innerWidth && innerWidth < 800 ? 4 : 8}
         wrap

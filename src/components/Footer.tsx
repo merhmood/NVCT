@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ollifiaPoettry } from "@/utils/font";
+import Link from "next/link";
 
 const Footer = () => {
   const socialIcons = [
@@ -19,9 +20,11 @@ const Footer = () => {
   return (
     <footer className="bg-[#6d2867] text-white mt-4 lg:mt-16 py-8 lg:py-6">
       <div className="w-5/6 lg:w-11/12 max-w-7xl mx-auto flex flex-col justify-center items-center lg:flex-row lg:justify-between lg:items-center">
-        <div className=" lg:text-2xl">
-          <span className="text-lg">&copy;</span>{" "}
-          <span className="">Nutty Vibes {new Date().getFullYear()}</span>
+        <div>
+          <span className="text-lg lg:text-2xl">&copy;</span>{" "}
+          <span className="lg:text-2xl">
+            Nutty Vibes {new Date().getFullYear()}
+          </span>
         </div>
         <div className="flex mt-1 lg:mt-0">
           {socialIcons.map((socialIcon, index) => (
@@ -34,6 +37,9 @@ const Footer = () => {
               )}
             </>
           ))}
+        </div>
+        <div className="mt-2 opacity-80">
+          <Link href="/dmca">DMCA</Link>
         </div>
       </div>
     </footer>

@@ -8,10 +8,10 @@ const ArticleItem = ({ article }: { article: ArticleType }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.currentTime = 0.1;
+    if (videoRef.current && article.thumbnailFrame) {
+      videoRef.current.currentTime = article.thumbnailFrame;
     }
-  }, []);
+  }, [article.thumbnailFrame]);
 
   return (
     <article className={`md:basis-80 shrink-0 grow-0 rounded-lg`}>
@@ -27,7 +27,7 @@ const ArticleItem = ({ article }: { article: ArticleType }) => {
               ref={videoRef}
               src={article.video}
               className={`rounded-md ${
-                article.type === "Desktop" ? "object-cover" : "object-contain"
+                article.type === "landscape" ? "object-cover" : "object-contain"
               } w-full h-full shadow-[#ac3fa34b] shadow`}
             ></video>
           )}
