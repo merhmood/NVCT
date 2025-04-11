@@ -36,7 +36,7 @@ export default function RootLayout({
         ></meta>
       </head>
       <body
-        className={`${satoshi.className} bg-[#181717] text-white flex flex-col justify-between h-screen`}
+        className={`${satoshi.className} w-full  text-white flex flex-col justify-between h-screen`}
       >
         <Suspense>
           <Navigation />

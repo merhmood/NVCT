@@ -19,3 +19,23 @@
     stroke-dashoffset: 0;
   }
 }
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("/bg-image.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 300px auto;
+  background-color: #181717;
+  background-blend-mode: soft-light;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@media screen and (min-width: 768px) {
+  body::before {
+    background-size: 500px auto;
+  }
+}

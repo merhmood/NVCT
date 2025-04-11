@@ -56,6 +56,10 @@ export default function Page() {
     }
   }, []);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, []);
+
   return (
     <main>
       <div className="mt-36 lg:mt-32"></div>
@@ -63,10 +67,10 @@ export default function Page() {
       <Articles
         articles={
           filteredArticles.length > 0
-            ? filteredArticles
-            : filteredArticles.length <= 0 && query
+            ? filteredArticles // Handles search result
+            : filteredArticles.length <= 0 && query // Handles no result
             ? []
-            : [...articles].sort((a, b) => 0.5 - Math.random())
+            : [...articles].sort((a, b) => 0.5 - Math.random()) // Handles randomizing all video request
         }
         ads={innerWidth && innerWidth < 800 ? 4 : 8}
         wrap
