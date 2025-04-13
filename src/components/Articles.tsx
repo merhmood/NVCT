@@ -45,7 +45,7 @@ const Articles = ({
     if (wrap && !showAll) {
       innerWidth > 800 ? setItemsPerPage(10) : setItemsPerPage(8);
     } else if (title === "New Videos") {
-      setItemsPerPage(8);
+      setItemsPerPage(10);
     } else {
       innerWidth > 800 ? setItemsPerPage(12) : setItemsPerPage(6);
     }

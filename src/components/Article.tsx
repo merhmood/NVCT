@@ -19,7 +19,9 @@ const Article = () => {
   let self = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    videoPlayerSetup(self);
+    if (article) {
+      videoPlayerSetup(self, article);
+    }
   });
 
   useEffect(() => {
@@ -101,7 +103,10 @@ const Article = () => {
 
 export default Article;
 
-function videoPlayerSetup(self: React.RefObject<HTMLVideoElement>) {
+function videoPlayerSetup(
+  self: React.RefObject<HTMLVideoElement>,
+  article: ArticleType
+) {
   let player: FluidPlayerInstance | null = null;
 
   if (!player) {
@@ -109,6 +114,7 @@ function videoPlayerSetup(self: React.RefObject<HTMLVideoElement>) {
       player = fluidPlayer(self.current, {
         layoutControls: {
           primaryColor: "#ff99f3",
+          posterImage: article?.thumbnail,
         },
         vastOptions: {
           adList: [

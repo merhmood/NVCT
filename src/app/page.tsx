@@ -34,7 +34,7 @@ export default function Page() {
   }, []);
 
   const splitedArticles = [...articles];
-  splitedArticles.splice(-8);
+  splitedArticles.splice(-10);
 
   return (
     <main>
@@ -42,7 +42,7 @@ export default function Page() {
       <BannerAds />
       <div className="mt-6"></div>
       <Articles
-        articles={[...articles].reverse().slice(0, 8)}
+        articles={[...articles].reverse().slice(0, 10)}
         title="New Videos"
         showLoader
         finishLoading={finishLoading}
