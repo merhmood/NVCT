@@ -41,13 +41,12 @@ export default function RootLayout({
         className={`${satoshi.className} w-full  text-white flex flex-col justify-between h-screen`}
       >
         <Suspense>
-          <Navigation />
-          <div className="w-11/12 lg:w-5/6 max-w-5xl h-fit mx-auto">
-            {children}
+          <div className="overflow-auto h-[80vh]">
+            <Navigation />
+            <div className="w-11/12 lg:w-5/6 max-w-5xl h-fit mx-auto">
+              {children}
+            </div>
           </div>
-          <PopUnderAds />
-          <VideoSliderAds />
-          <InstantMessageAds />
         </Suspense>
         <Footer />
       </body>

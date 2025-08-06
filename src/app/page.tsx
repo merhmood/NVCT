@@ -1,59 +1,34 @@
 "use client";
 
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import Articles from "@/components/Articles";
 
-import type { ArticleType } from "@/types";
-import BannerAds from "@/components/BannerAds";
+const creators = [
+  {
+    creator: "Ms Sethi",
+  },
+  {
+    creator: "Gracie Bon",
+  },
+  {
+    creator: "Blah GiGi",
+  },
+];
 
 export default function Page() {
-  const [finishLoading, setFinishLoading] = useState(false);
-  const [articles, setArticles] = useState<Array<ArticleType>>([]);
-  const [innerWidth, setInnerWidth] = useState<number | null>(null);
-
-  useEffect(() => {
-    // Fetch data and set them in reverse order, also handles
-    // rendering the first set of articles to the screen
-    (async () => {
-      const data = await fetch("/data.json");
-      const response: { articles: [] } = await data.json();
-      setArticles(response.articles);
-      setFinishLoading(true);
-    })();
-  }, []);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setInnerWidth(window.innerWidth);
-
-      const handleResize = () => setInnerWidth(window.innerWidth);
-      window.addEventListener("resize", handleResize);
-
-      return () => window.removeEventListener("resize", handleResize);
-    }
-  }, []);
-
-  const splitedArticles = [...articles];
-  splitedArticles.splice(-10);
-
   return (
-    <main>
-      <div className="mt-36 lg:mt-32"></div>
-      <BannerAds />
-      <div className="mt-6"></div>
-      <Articles
-        articles={[...articles].reverse().slice(0, 10)}
-        title="New Videos"
-        showLoader
-        finishLoading={finishLoading}
-      />
-      <Articles
-        articles={splitedArticles.sort((a, b) => 0.5 - Math.random())}
-        ads={innerWidth && innerWidth < 800 ? 6 : 8}
-        title="More videos"
-        finishLoading={finishLoading}
-        wrap
-      />
+    <main className="flex items-center gap-4 p-4 flex-wrap mt-10">
+      {creators.map((item, index) => (
+        <div key={index}>
+          <Image
+            src={`/Folder.png`}
+            alt={item.creator}
+            width={130}
+            height={130}
+          />
+          <h2 className="text-lg text-center">{item.creator}</h2>
+        </div>
+      ))}
     </main>
   );
 }
