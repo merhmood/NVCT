@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: false,
   images: {
-    domains: ["nutty-store-pull.b-cdn.net"],
+    domains: ["cdn.bunny.net", "vz-7b7ebf7e-774.b-cdn.net"],
   },
 };
 

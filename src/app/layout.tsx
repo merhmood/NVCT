@@ -4,11 +4,8 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
 import { satoshi } from "@/utils/font";
-import PopUnderAds from "@/components/PopUnderAds";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import VideoSliderAds from "@/components/VideoSliderAds";
-import InstantMessageAds from "@/components/InstantMessageAds";
 
 export const metadata: Metadata = {
   title: "Nutty Vibes",
@@ -40,14 +37,13 @@ export default function RootLayout({
       <body
         className={`${satoshi.className} w-full  text-white flex flex-col justify-between h-screen`}
       >
-        <Suspense>
-          <div className="overflow-auto h-[80vh]">
-            <Navigation />
-            <div className="w-11/12 lg:w-5/6 max-w-5xl h-fit mx-auto">
-              {children}
-            </div>
+        <div id="modal"></div>
+        <div id="app" className="overflow-auto h-[80vh]">
+          <Navigation />
+          <div className="w-11/12 lg:w-5/6 max-w-5xl h-fit mx-auto">
+            {children}
           </div>
-        </Suspense>
+        </div>
         <Footer />
       </body>
       <GoogleAnalytics gaId="G-796EYQTS8W" />
