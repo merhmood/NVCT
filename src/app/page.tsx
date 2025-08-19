@@ -53,11 +53,17 @@ export default function Page() {
   ) : (
     <main>
       <h3 className="text-center">Creators 18+</h3>
+      <p>
+        By accessing the folders you have agree to our{" "}
+        <Link href="/terms" className="text-blue-800">
+          terms of use
+        </Link>
+      </p>
       <div className="grid grid-cols-2 md:flex items-center gap-4 p-4 flex-wrap mt-10">
         {creators ? (
           creators.map((item, index) => (
             <Link
-              href={`/creator/${item.creator}`}
+              href={`/creator/${item.creator.replace(" ", "-")}`}
               key={index}
               className="flex flex-col items-center"
             >

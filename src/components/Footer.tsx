@@ -40,7 +40,8 @@ const Footer = () => {
         </div>
         <div className="mt-2 flex gap-3 lg:gap-4 opacity-80">
           <Link href="/dmca">DMCA</Link>
-          <Link href="/policy">Policy</Link>
+          <Link href="/policy">18 U.S.C. 2257 Compliance Statement</Link>
+          <Link href="/terms">Terms of use</Link>
         </div>
       </div>
     </footer>

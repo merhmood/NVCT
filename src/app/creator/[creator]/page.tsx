@@ -13,7 +13,7 @@ interface Video {
 
 export default function CreatorPage() {
   const params = useParams();
-  const creator = params?.creator as string;
+  const creator = (params?.creator as string).replace("-", " ");
   const [videos, setVideos] = useState<Video[]>([]);
   const [showModal, setShowModal] = useState(false);
   const [activeVideo, setActiveVideo] = useState<Video | null>(null);
@@ -87,7 +87,7 @@ export default function CreatorPage() {
       <h1 className="text-2xl font-bold mb-4">{creator}&apos;s Videos</h1>
       <p className="mb-4">💰 Coins: {userCoins}</p>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 items-start">
         {videos.map((video, index) => (
           <div
             key={index}
