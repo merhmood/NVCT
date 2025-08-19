@@ -5,22 +5,55 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
+const api = axios.create({
+  baseURL: "https://api.nuttyvibes.com",
+  withCredentials: true, // 🔑 send cookies with requests
+});
+
 export default function Page() {
+  const [login, setLogin] = useState<"not-login" | "login" | "error">(
+    "not-login"
+  ); // not-login | login | error
   const [creators, setCreators] = useState<{ creator: string }[]>([]);
 
   useEffect(() => {
-    const fetchCreators = async () => {
+    const fetchUserAndCreators = async () => {
       try {
-        const response = await axios.get(`/data.json`);
-        setCreators(response.data);
-        //setCreators(response.data.creators);
-      } catch (error) {
-        console.error("Error fetching creators:", error);
+        // 🔑 check if user is authenticated
+        const response = await api.get("/user");
+
+        if (response.status === 200) {
+          console.log("User:", response.data);
+
+          // fetch creators (static file or API)
+          try {
+            const creatorsRes = await axios.get("/data.json"); // ✅ relative path
+            setCreators(creatorsRes.data);
+          } catch (err) {
+            console.error("Error fetching creators:", err);
+          }
+
+          setLogin("login");
+        }
+      } catch (err: any) {
+        if (err.response?.status === 401) {
+          setLogin("error"); // not logged in
+        } else {
+          console.error("Unexpected error:", err);
+          setLogin("error");
+        }
       }
     };
-    fetchCreators();
+
+    fetchUserAndCreators();
   }, []);
-  return (
+
+  if (login === "error") {
+    return <div className="text-center">use Telegram bot to login</div>;
+  }
+  return login === "not-login" ? (
+    <div className="text-center">Loading Contents...</div>
+  ) : (
     <main className="grid grid-cols-2 md:flex items-center gap-4 p-4 flex-wrap mt-10">
       {creators ? (
         creators.map((item, index) => (

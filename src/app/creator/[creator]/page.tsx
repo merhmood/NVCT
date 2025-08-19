@@ -45,6 +45,13 @@ export default function CreatorPage() {
       return;
     }
 
+    // const viewContent = async () => {
+    //   const response = await axios.put("", {
+    //     coinsAmount: video.coins,
+    //   });
+    //   if(response.status === )
+    // };
+
     // Deduct coins per view
     setUserCoins((prev) => prev - video.coins);
 

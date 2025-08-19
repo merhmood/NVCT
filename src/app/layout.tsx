@@ -8,7 +8,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Nutty Vibes",
+  title: "Nutt and Vibes",
   description: "Best website for your amazing Adult content",
   icons: "/logo.jpg",
   twitter: {
