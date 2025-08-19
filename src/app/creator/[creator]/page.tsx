@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useParams } from "next/navigation";
 import VideoPlayer from "@/components/VideoPlayerModal";
 import axios from "axios";
+import api from "@/utils/apiWithCred";
 
 interface Video {
   thumbnail: string;
@@ -19,7 +20,7 @@ export default function CreatorPage() {
   const [activeVideo, setActiveVideo] = useState<Video | null>(null);
 
   // Mock user coin balance
-  const [userCoins, setUserCoins] = useState(100);
+  const [userCoins, setUserCoins] = useState(0);
 
   useEffect(() => {
     if (!creator) return;
@@ -38,6 +39,26 @@ export default function CreatorPage() {
     };
     fetchVideos();
   }, [creator]);
+
+  useEffect(() => {
+    const getCoins = async () => {
+      const uid = localStorage.getItem("uid");
+      if (!uid) return console.error("No UID in localStorage!");
+      try {
+        // ✅ GET request with query param
+        const response = await api.get(
+          `https://api.nuttyvibes.com/user-coins/${uid}`,
+          { withCredentials: true } // still send cookies if needed
+        );
+
+        console.log("Success:", response.data);
+        setUserCoins(response.data.coinsBalance);
+      } catch (error) {
+        console.error("Request failed:", error);
+      }
+    };
+    getCoins();
+  }, []);
 
   const handlePlayVideo = (video: Video) => {
     if (userCoins < video.coins) {
