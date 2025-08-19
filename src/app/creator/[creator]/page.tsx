@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
 import { useParams } from "next/navigation";
 import VideoPlayer from "@/components/VideoPlayerModal";
 import axios from "axios";
@@ -66,19 +65,21 @@ export default function CreatorPage() {
       return;
     }
 
-    // const viewContent = async () => {
-    //   const response = await axios.put("", {
-    //     coinsAmount: video.coins,
-    //   });
-    //   if(response.status === )
-    // };
+    const viewContent = async () => {
+      const response = await api.post("/deduct-coins", {
+        uid: localStorage.getItem("uid"),
+        coins: video.coins,
+      });
+      if (response.status === 200) {
+        // Deduct coins per view
+        setUserCoins(response.data.coinsBalance);
 
-    // Deduct coins per view
-    setUserCoins((prev) => prev - video.coins);
-
-    // Open modal with selected video
-    setActiveVideo(video);
-    setShowModal(true);
+        // Open modal with selected video
+        setActiveVideo(video);
+        setShowModal(true);
+      }
+    };
+    viewContent();
   };
 
   return (

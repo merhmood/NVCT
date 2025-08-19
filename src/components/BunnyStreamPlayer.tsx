@@ -16,7 +16,7 @@ const BunnyStreamPlayer: React.FC<BunnyStreamPlayerProps> = ({ videoId }) => {
   return (
     <div style={{ position: "relative", paddingTop: "56.25%" }}>
       <iframe
-        src={`https://iframe.mediadelivery.net/embed/479044/${videoId}?token=204f458062fc5ba45e1722aa60a50b9d79ef8df227a14b9721e0a731e704277b&expires=1754904437&autoplay=true&loop=false&muted=false&preload=true&responsive=true`}
+        src={`https://iframe.mediadelivery.net/embed/481836/${videoId}?token=01d75945fc9a9d07989cdb18e6cf6d963c89bfa9fe96dfb0a8199c3664afa090&expires=1754904437&autoplay=true&loop=false&muted=false&preload=true&responsive=true`}
         loading="lazy"
         style={{
           border: 0,
