@@ -20,8 +20,6 @@ export default function Page() {
 
         if (response.status === 200) {
           console.log("uid", response.data.id);
-          localStorage.setItem("uid", response.data.id);
-
           // fetch creators (static file or API)
           try {
             const creatorsRes = await axios.get("/data.json"); // ✅ relative path
@@ -46,7 +44,11 @@ export default function Page() {
   }, []);
 
   if (login === "error") {
-    return <div className="text-center">use Telegram bot to login</div>;
+    return (
+      <div className="text-center">
+        Error logging you in, try again with telegram bot.
+      </div>
+    );
   }
   return login === "not-login" ? (
     <div className="text-center">Loading Contents...</div>
