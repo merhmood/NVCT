@@ -10,24 +10,20 @@ function AuthPage() {
   useEffect(() => {
     const handleAuth = async () => {
       try {
-        const params = new URLSearchParams(window.location.search);
-        const authData = Object.fromEntries(params.entries());
+        const queryString = window.location.search;
 
-        // ✅ Send auth data to backend
-        const response = await axios.post(
-          "/api/auth",
-          { withCredentials: true },
-          authData
-        );
+        // ✅ Send data as query string (GET request)
+        const response = await axios.get(`/api/auth${queryString}`, {
+          withCredentials: true,
+        });
 
         // ✅ Save Telegram user id in localStorage
-        localStorage.setItem("uid", response.data.uid);
+        localStorage.setItem("uid", response.data.id);
 
         // ✅ Redirect to dashboard
         router.push("/");
       } catch (error) {
         console.error("Login failed:", error);
-        // ✅ Redirect to dashboard
         router.push("/");
       }
     };
