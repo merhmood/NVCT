@@ -4,7 +4,6 @@ import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import api from "@/utils/apiWithCred";
 
 export default function Page() {
   const [login, setLogin] = useState<"not-login" | "login" | "error">(
@@ -16,7 +15,9 @@ export default function Page() {
     const fetchUserAndCreators = async () => {
       try {
         // 🔑 check if user is authenticated
-        const response = await api.get("/user");
+        const response = await axios.get("/api/user", {
+          withCredentials: true,
+        });
 
         if (response.status === 200) {
           console.log("uid", response.data.id);

@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import api from "@/utils/apiWithCred";
+import axios from "axios";
 
 function AuthPage() {
   const router = useRouter();
@@ -14,8 +14,9 @@ function AuthPage() {
         const authData = Object.fromEntries(params.entries());
 
         // ✅ Send auth data to backend
-        const response = await api.post(
-          "https://api.nuttyvibes.com/auth",
+        const response = await axios.post(
+          "/api/auth",
+          { withCredentials: true },
           authData
         );
 
