@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import VideoPlayer from "@/components/VideoPlayerModal";
 import axios from "axios";
-import api from "@/utils/apiWithCred";
 
 interface Video {
   thumbnail: string;
@@ -45,8 +44,8 @@ export default function CreatorPage() {
       if (!uid) return console.error("No UID in localStorage!");
       try {
         // ✅ GET request with query param
-        const response = await api.get(
-          `https://api.nuttyvibes.com/user-coins/${uid}`,
+        const response = await axios.get(
+          `/api/user-coins/${uid}`,
           { withCredentials: true } // still send cookies if needed
         );
 
@@ -66,10 +65,14 @@ export default function CreatorPage() {
     }
 
     const viewContent = async () => {
-      const response = await api.post("/deduct-coins", {
-        uid: localStorage.getItem("uid"),
-        coins: video.coins,
-      });
+      const response = await axios.post(
+        "/api/deduct-coins",
+        {
+          uid: localStorage.getItem("uid"),
+          coins: video.coins,
+        },
+        { withCredentials: true }
+      );
       if (response.status === 200) {
         // Deduct coins per view
         setUserCoins(response.data.coinsBalance);
